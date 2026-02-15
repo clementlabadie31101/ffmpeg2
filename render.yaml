@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ffmpeg-api
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      apt-get update && apt-get install -y ffmpeg
+    startCommand: uvicorn api:app --host 0.0.0.0 --port 10000
